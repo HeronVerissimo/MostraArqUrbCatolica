@@ -8,6 +8,7 @@
 
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
 
     <style>
         body {
@@ -17,10 +18,12 @@
     </style>
 
 </head>
-<a-scene embedded arjs="sourceType: webcam;">
-    <a-entity camera></a-entity>
+<a-scene embedded arjs="sourceType: webcam;" gesture-detector>
+    <a-entity camera cursor="rayOrigin: mouse; fuse:false" raycaster="objects: .tocavel"></a-entity>
     <a-marker preset="hiro">
-       <a-entity gltf-model="url(modelo.glb)" scale="2 2 2" position="0 0 0">  <!-- a z a -->
+        <a-entity class="tocavel" gesture-handler gltf-model="url(modelo.glb)" scale="2.5 2.5 2.5" position="0 0 0"
+            animation__spin="property: rotation; to: 0 360 0;  dur: 3000; easing: linear; 
+                        loop: true; autoplay: false; resumeEvents: mousedown; pauseEvents: mouseup">
         </a-entity>
     </a-marker>
 </a-scene>
